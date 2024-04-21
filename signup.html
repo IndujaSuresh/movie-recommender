@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% set active_page = "menu2" %}
+{% block content %}
+    <div class="box">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        
+       &nbsp;&nbsp;{{ messages[0] }}<br>&nbsp;&nbsp;Already a user?&nbsp; <a href="{{ url_for('auth.login') }}"><font color="blue">Login</font></a> &nbsp; here  
+       
+    {% endif %}
+    {% endwith %}
+    <form method="POST" action="/signup">
+    
+      <br><h3 class="title"><b><font color="#00bc8c">REGISTER</font></b></h3>
+      <label for="email">&nbsp;&nbsp;Email</label><br>
+      <input class="box1" type="email" placeholder="email" name="email" size="30" required>
+      
+      <label for="name">&nbsp;&nbsp;Username</label><br>
+      <input class="box1" type="text" placeholder="name" name="name" size="30" required>
+      
+      <label for="psw">&nbsp;&nbsp;Password</label><br>
+      <input class="box1" type="password" placeholder="password" name="password" size="30" required>
+
+      <label for="psw">&nbsp;&nbsp;Confirm Password</label><br>
+      <input class="box1" type="password" placeholder="confirm password" name="confirm" size="30" required>
+      
+      
+          <button class="box2">Sign Up</button>
+
+      <!--<a href="{{ url_for('auth.login') }}"><font color="blue">
+      <br>Already have an account ? Login</font></br></font></a>-->
+        </form>
+    </div>
+{% endblock %}

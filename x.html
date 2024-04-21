@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% set active_page = "menu5" %}
+{% block content %}
+
+<li>&nbsp;<a href="{{ url_for('auth.genre_u') }}" style="color: white; float: left;">Change your preference</a>&nbsp;&nbsp;</li>
+
+{%for i in range(0, c)%}
+    
+    <h2>{{pre[i]}}</h2>
+
+    {%for j in range (0, 10)%}
+
+
+            <section style="width: 100%; height: 550px; ">
+     
+          <div class="card card_{{p[i][j][4]}}" id="image{{p[i][j][4]}}">
+       </div>
+    <div class="des{{p[i][j][4]}}" style=" height: 700px;margin-left: 430px;padding-top: 200px; color: white;">
+    <h2>{{p[i][j][2]}} </h2>
+    <h3>{{p[i][j][3]}}</h3>
+    <p class= "overview" id="overview{{p[i][j][4]}}" style="color: white; font-size: 24;"></p>
+   <form method="POST" action="{{ url_for('auth.positive')}}">
+    <input type="hidden" name="movieId" value="{{p[i][j][1]}}" id="movieId">  
+    <input type="hidden" name="name" value="{{p[i][j][2]}}" id="name">  
+    <button type="submit"> rate now</button></a>
+    </form> 
+    </div>   
+  </section>
+<br><br><br><br>
+   <br><br>
+ 
+  <script>
+
+
+   fetch("https://api.themoviedb.org/3/movie/"+{{p[i][j][4]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.overview;  
+        //Apply HTML src
+        document.getElementById('overview{{p[i][j][4]}}').innerHTML = value;
+    });  
+  </script>
+
+   <script>
+     fetch("https://api.themoviedb.org/3/movie/"+{{p[i][j][4]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image{{p[i][j][4]}}').style.backgroundImage = urlString;
+       document.getElementById('image{{p[i][j][4]}}').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image{{p[i][j][4]}}}').style.backgroundSize = "cover";
+    });
+   </script>    
+
+ <script>  
+fetch("https://api.themoviedb.org/3/movie/"+{{p[i][j][4]}}+"/videos?api_key=232323d86ffdce2f2dddc40cca321612&append_to_response=videost")
+.then((response) => response.json())
+.then((data) => {
+const value = data.results[0].key
+//Apply HTML src
+document.getElementById("ytplayer{p[i][j][4}}").src = 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1'
+//Set Data-Attribute
+document.getElementById("ytplayer{{p[i][j][4]}}").setAttribute('data-video', 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1')
+});
+</script> 
+      
+    {%endfor%}
+
+{%endfor%}
+
+
+{% endblock %}

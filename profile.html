@@ -1,0 +1,266 @@
+{% extends "base.html" %}
+{% set active_page = "menu3" %}
+{% block content %}
+<br><br><br>
+     <h2 class="title">Welcome, {{ name }}!</h2>
+     <form class="form-group shadow-textarea" action="{{ url_for('auth.main') }}"  method="POST" style="margin-top: 30px;text-align: center;color: white;">
+       <input type="text" class="movie form-control" id="autoComplete" autocomplete="off" name="movie_name" placeholder="Enter a full movie name" style="background-color: #ffffff;border-color:#ffffff;width: 60%;color: #181818" required="required" >
+    
+        <br>
+    <div class="form-group" style="text-align: center;">
+      <button class="btn btn-primary btn-block movie-button" style="background-color: #00bc8c;text-align: center;border-color: #00bc8c;width:120px;"
+       id="searchbtn" type="submit">Enter</button><br><br>
+    </div>
+  </div>
+ 
+  </div>
+</form>
+
+  
+ <h2 id="popular" style="color: white;">Top Rated Movies</h2>  
+ <div class="unit" style="background-color:black;" >
+{%for i in range(0, len)%}
+  
+     <div class="card" id="image{{i}}">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">{{i+1}}
+            <h2 style="color:white;">{{movie_name[i]}}</h2>
+            <h3>({{year[i]}})</h3>
+            <h3>{{genres[i]}}</h3>
+    </span>
+  </div>
+
+{%endfor%}
+  
+</div>
+ <br><br><br><br>
+ <!-- <div class="card" id="image2">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">02
+           <h1 style="color:white;">{{movie_name[1]}}</h1>
+            <h3>({{year[1]}})</h3>
+            <h3>{{genres[1]}}</h3>
+    </span>
+  </div>
+  <div class="card" id="image3">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">03
+            <h1 style="color:white;">{{movie_name[2]}}</h1>
+            <h3>({{year[2]}})</h3>
+            <h3>{{genres[2]}}</h3>
+    </span>
+
+  </div>
+  <div class="card" id="image4">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">04
+            <h1 style="color:white;">{{movie_name[3]}}</h1>
+            <h3>({{year[3]}})</h3>
+            <h3>{{genres[3]}}</h3>
+    </span>
+</div>
+   <div class="card" id="image5">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">05
+            <h1 style="color:white;">{{movie_name[4]}}</h1>
+            <h3>({{year[4]}})</h3>
+            <h3>{{genres[4]}}</h3>
+    </span>
+</div>
+   <div class="card" id="image6">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">06
+            <h1 style="color:white;">{{movie_name[5]}}</h1>
+            <h3>({{year[5]}})</h3>
+            <h3>{{genres[5]}}</h3>
+    </span>
+</div>
+  <div class="card" id="image7">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">07
+            <h1 style="color:white;">{{movie_name[6]}}</h1>
+            <h3>({{year[6]}})</h3>
+            <h3>{{genres[6]}}</h3>
+    </span>
+</div>
+  <div class="card" id="image8">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">08
+            <h1 style="color:white;">{{movie_name[7]}}</h1>
+            <h3>({{year[7]}})</h3>
+            <h3>{{genres[7]}}</h3>
+    </span>
+</div>
+   <div class="card" id="image9">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">09
+            <h1 style="color:white;">{{movie_name[8]}}</h1>
+            <h3>({{year[8]}})</h3>
+            <h3>{{genres[8]}}</h3>
+    </span>
+</div>
+  <div class="card" id="image10">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">10
+            <h1 style="color:white;">{{movie_name[9]}}</h1>
+            <h3>({{year[9]}})</h3>
+            <h3>{{genres[9]}}</h3>
+    </span>
+</div>-->
+</div>
+
+ 
+  </div>
+
+  </div>
+
+
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+ 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js" integrity="sha512-XtmMtDEcNz2j7ekrtHvOVR4iwwaD6o/FUJe6+Zq+HgcCsk3kj4uSQQR8weQ2QVj1o0Pk6PwYLohm206ZzNfubg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script type="text/javascript">
+    $('.unit').slick({
+  infinite: true,
+  slidesToShow: 4,
+  slidesToScroll: 4
+});
+  </script> 
+  
+{%for i in range(0, len)%}
+   <script>
+
+    
+
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[i]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image{{i}}').style.backgroundImage = urlString;
+       document.getElementById('image{{i}}').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image{{i}}').style.backgroundSize = "cover";
+    });
+  </script>
+
+{%endfor%}
+
+<!--  fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[1]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image2').style.backgroundImage = urlString;
+       document.getElementById('image2').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image2').style.backgroundSize = "cover";
+    });
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[2]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image3').style.backgroundImage = urlString;
+       document.getElementById('image3').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image3').style.backgroundSize = "cover";
+
+    });
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[3]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image4').style.backgroundImage = urlString;
+       document.getElementById('image4').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image4').style.backgroundSize = "cover";
+    });
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[4]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image5').style.backgroundImage = urlString;
+       document.getElementById('image5').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image5').style.backgroundSize = "cover";
+    });
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[5]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image6').style.backgroundImage = urlString;
+       document.getElementById('image6').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image6').style.backgroundSize = "cover";
+    });
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[6]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image7').style.backgroundImage = urlString;
+       document.getElementById('image7').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image7').style.backgroundSize = "cover";
+    });
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[7]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image8').style.backgroundImage = urlString;
+       document.getElementById('image8').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image8').style.backgroundSize = "cover";
+    });
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[8]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image9').style.backgroundImage = urlString;
+       document.getElementById('image9').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image9').style.backgroundSize = "cover";
+    });
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[9]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image10').style.backgroundImage = urlString;
+       document.getElementById('image10').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image10').style.backgroundSize = "cover";
+    });    
+    </script> -->
+     
+{% endblock %}
+

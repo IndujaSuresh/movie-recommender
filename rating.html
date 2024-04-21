@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>MovieFlikZz</title>
+    <link rel="stylesheet" href="https://bootswatch.com/5/darkly/bootstrap.min.css" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="shortcut icon" href="static/lol.ico" type="image/x-icon" />
+     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.css" integrity="sha512-wR4oNhLBHf7smjy0K4oqzdWumd+r5/+6QO/vDda76MW5iug4PT7v86FoEkySIJft3XA0Ae6axhIvHrqwm793Nw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+/* Ratings widget */
+.rate {
+    display: inline-block;
+    border: 0;
+}
+/* Hide radio */
+.rate > input {
+    display: none;
+}
+/* Order correctly by floating highest to the right */
+.rate > label {
+    float: right;
+
+}
+/* The star of the show */
+.rate > label:before {
+    display: inline-block;
+    font-size: 1.1rem;
+    padding: .3rem .2rem;
+    margin: 0;
+    cursor: pointer;
+    font-family: FontAwesome;
+    content: "\f005 "; /* full star */
+}
+
+/* Half star trick */
+.rate .half:before {
+    content: "\f089 "; /* half star no outline */
+    position: absolute;
+    padding-right: 0;
+}
+/* Click + hover color */
+input:checked ~ label, /* color current and previous stars on checked */
+label:hover, label:hover ~ label { color: gold;  } /* color previous stars on hover */
+
+/* Hover highlights */
+input:checked + label:hover, input:checked ~ label:hover, /* highlight current and previous stars */
+input:checked ~ label:hover ~ label, /* highlight previous selected stars for new rating */
+label:hover ~ input:checked ~ label /* highlight previous selected stars */ { color: orange;  } 
+
+</style>
+</head>
+<body>
+
+<br><br><br><br>
+<div class="rate1" style="margin-left: 400px;">
+<h2>{{name}}</h2>
+<form method="POST" action="/rating" >
+
+<centre><fieldset class="rate">
+    <input type = "hiddden" name = "movieId" value="{{m_id}}" id="movieId" /></p>
+    <input type="radio" name="rating" id="rating10" value="5" /><label for="rating10" title="5 stars"></label>
+    <input type="radio" name="rating" id="rating9" value="4.5" /><label class="half" for="rating9" title="4 1/2 stars"></label>
+    <input type="radio" name="rating" id="rating8" value="4" /><label for="rating8" title="4 stars"></label>
+    <input type="radio" name="rating" id="rating7" value="3.5" /><label class="half" for="rating7" title="3 1/2 stars"></label>
+    <input type="radio" name="rating" id="rating6" value="3" /><label for="rating6" title="3 stars"></label>
+    <input type="radio" name="rating" id="rating5" value="2.5" /><label class="half" for="rating5" title="2 1/2 stars"></label>
+    <input type="radio" name="rating" id="rating4" value="2" /><label for="rating4" title="2 stars"></label>
+    <input type="radio" name="rating" id="rating3" value="1.5" /><label class="half" for="rating3" title="1 1/2 stars"></label>
+    <input type="radio" id="rating2" name="rating" value="1" /><label for="rating2" title="1 star"></label>
+    <input type="radio" id="rating1" name="rating" value="0.5" /><label class="half" for="rating1" title="1/2 star"></label>
+    <button class="box2" style="float: right;">Submit</button></div></centre>
+</form>
+</div>
+</body>
+    
+{% endblock %}

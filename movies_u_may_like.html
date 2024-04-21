@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% set active_page = "menu6" %}
+{% block content %}
+
+<h1>Movies you may like</h1>
+
+{% if his==0 %}
+
+<h2>We couldn't find any recommendation for you..start rating</h2>
+
+{% else %}
+<article>
+ <div class="wrapper" >
+
+{%for i in range(0, len)%}
+  <div  style="background-color:black;" >
+    <div class="card" id="image{{i}}">
+    <div class="card__overlay"></div>
+    <div class="card__content">
+    </div><span class="card__number">
+            <h1 style="color:white;">{{movie_name[i]}}</h1>
+            <h3>({{year[i]}})</h3>
+            <h3>{{genres[i]}}</h3>
+            <h3>{{avg[i]}}</h3>
+     </span>
+     </div>
+</div><br><br>
+{%endfor%}
+</article>
+{% endif %}
+
+ <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='autocomplete.js')}}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  
+{%for i in range(0, len)%}
+   <script>
+
+    
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb[i]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image{{i}}').style.backgroundImage = urlString;
+       document.getElementById('image{{i}}').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image{{i}}').style.backgroundSize = "cover";
+    });
+  </script>
+
+{% endfor %}
+
+{%endblock%}

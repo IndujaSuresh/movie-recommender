@@ -1,0 +1,407 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+ 
+<body style="background-color: black;">
+<section  style="width: 100%; height: 550px;">
+<div id= "details" style= "float: left; padding-top: 0px;">
+  <div class="card" id="image" style="margin-left: 0px;">
+</div>
+</div>
+<div class="des" style="margin-left: 450px; padding-top: 200px; color: white;">
+   <h1>{{name}} ({{movie_year[0]}})</h1>
+   <h2>{{movie_genre[0]}}</h2>
+   <p class= "overview" id="overview" style="color: white; font-size: 24; "></p>
+</div>   
+</section>
+
+<h1>Showing Results for {{ name }} </h1>
+
+<h2>Similar Movies</h2>
+
+
+   {%for i in range(1, 7)%}  
+     <section style="width: 100%; height: 550px; ">
+     
+     <div class="card card_{{i}}" id="image{{i}}">
+        <div class="date">
+        </div>
+        <div class="content">
+        </div>
+        <div class="sinopse">
+          <iframe id="ytplayer{{i}}" class="player2" type="text/html"  frameborder="0" autoplay allowfullscreen></iframe>
+          <div class="content-sinopse">
+          </div>
+        </div>
+      
+    </div>
+    <div class="des{{i}}" style=" height: 700px;margin-left: 430px;padding-top:200px;color: white;">
+    <h2>{{movie_name[i]}} ({{movie_year[i]}})</h2>
+    <h3>{{movie_genre[i]}}</h3>
+    <p class= "overview" id="overview{{i}}" style="color: white; font-size: 24;"></p>
+   <form method="POST" action="{{ url_for('auth.positive')}}">
+    <input type="hidden" name="movieId" value="{{m_id[i]}}" id="movieId">  
+    <input type="hidden" name="name" value="{{movie_name[i]}}" id="name">
+    <button type="submit"> rate now</button></a>
+    </form> 
+    </div>   
+  </section>
+<br><br><br><br>
+{%endfor%}<br><br>
+
+ <!--   <section style="width: 100%; height: 550px; ">
+      <div class="card card_2" id="image3">
+        <div class="date">
+          {{ movie_year[2] }}
+        </div>
+        <div class="content">
+          <div class="title">
+            {{ movie_name[2] }}
+          </div>
+          <div class="text">
+          </div>
+        </div>
+        <div class="sinopse">
+          <iframe id="ytplayer2" class="player2" type="text/html"  frameborder="0" autoplay allowfullscreen></iframe>
+          <div class="content-sinopse">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="des2" style="margin-left: 450px; color: white;">
+      <h2>{{movie_name[2]}} ({{movie_year[2]}})</h2>
+      <h3>{{movie_genre[2]}}</h3>
+      <p class= "overview" id="overview2" style="color: white; font-size: 24;"></p>
+    </div>   
+      </section>
+
+    <section style="width: 100%; height: 550px; ">
+      <div class="card card_3" id="image4">
+        <div class="date">
+          {{ movie_year[3] }}
+        </div>
+        <div class="content">
+          <div class="title">
+            {{ movie_name[3] }}
+          </div>
+          <div class="text">
+
+          </div>
+        </div>
+        <div class="sinopse">
+          <iframe id="ytplayer3" class="player2" type="text/html"  frameborder="0" autoplay allowfullscreen></iframe>
+            <div class="content-sinopse">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="des3" style="margin-left: 450px; color: white;">
+      <h2>{{movie_name[3]}} ({{movie_year[3]}})</h2>
+      <h3>{{movie_genre[3]}}</h3>
+      <p class= "overview" id="overview3" style="color: white; font-size: 24;"></p>
+    </div>   
+      </section>
+      
+      <section style="width: 100%; height: 550px; ">
+      <div class="card card_4" id="image5">
+        <div class="date">
+          {{ movie_year[4] }}
+        </div>
+        <div class="content">
+          <div class="title">
+            {{ movie_name[4] }}
+          </div>
+          <div class="text">
+          </div>
+        </div>
+        <div class="sinopse">
+          <iframe id="ytplayer4" class="player2" type="text/html"  frameborder="0" autoplay allowfullscreen></iframe>
+            <div class="content-sinopse">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="des4" style="margin-left: 450px; color: white;">
+      <h2>{{movie_name[4]}} ({{movie_year[4]}})</h2>
+      <h3>{{movie_genre[4]}}</h3>
+      <p class= "overview" id="overview4" style="color: white; font-size: 24;"></p>
+      </div>   
+      </section>
+          
+        <section style="width: 100%; height: 550px; ">  
+        <div class="card card_5" id="image6">
+        <div class="date">
+          {{ movie_year[5] }}
+        </div>
+        <div class="content">
+          <div class="title">
+            {{ movie_name[5] }}
+          </div>
+          <div class="text">
+          </div>
+        </div>
+        <div class="sinopse">
+          <iframe id="ytplayer5" class="player2" type="text/html"  frameborder="0" autoplay allowfullscreen></iframe>
+            <div class="content-sinopse">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+     <div class="des4" style="margin-left: 450px; color: white;">
+      <h2>{{movie_name[5]}} ({{movie_year[5]}})</h2>
+      <h3>{{movie_genre[5]}}</h3>
+      <p class= "overview" id="overview5" style="color: white; font-size: 24;"></p>
+      </div>   
+  </section>-->
+
+
+ <script src="https://cdn.jsdelivr.net/npm/@tarekraafat/autocomplete.js@7.2.0/dist/js/autoComplete.min.js"></script>
+  <script type="text/javascript" src="{{url_for('static', filename='autocomplete.js')}}"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+
+    
+   <script>
+
+   fetch("https://api.themoviedb.org/3/movie/"+{{tmdb}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.overview;  
+        //Apply HTML src
+        document.getElementById('overview').innerHTML = value;
+    }); 
+    </script>    
+
+
+  {%for i in range(1, len)%}   
+  <script>
+
+   fetch("https://api.themoviedb.org/3/movie/"+{{movieId[i]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.overview;  
+        //Apply HTML src
+        document.getElementById('overview{{i}}').innerHTML = value;
+    });  
+  </script>
+{%endfor%} 
+  <!--  fetch("https://api.themoviedb.org/3/movie/"+{{movieId[1]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.overview;  
+        //Apply HTML src
+        document.getElementById('overview2').innerHTML = value;
+    });  
+    
+    fetch("https://api.themoviedb.org/3/movie/"+{{movieId[1]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.overview;  
+        //Apply HTML src
+        document.getElementById('overview3').innerHTML = value;
+    });  
+    
+    fetch("https://api.themoviedb.org/3/movie/"+{{movieId[1]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.overview;  
+        //Apply HTML src
+        document.getElementById('overview4').innerHTML = value;
+    });  
+    
+    fetch("https://api.themoviedb.org/3/movie/"+{{movieId[1]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.overview;  
+        //Apply HTML src
+        document.getElementById('overview5').innerHTML = value;
+    });  
+
+
+
+   </script>-->
+  
+  
+   <script>
+
+    fetch("https://api.themoviedb.org/3/movie/"+{{tmdb}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image').style.backgroundImage = urlString;
+       document.getElementById('image').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image').style.backgroundSize = "cover";
+    });
+  </script>
+  
+{%for i in range(1, len)%}
+   <script>
+     fetch("https://api.themoviedb.org/3/movie/"+{{movieId[i]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image{{i}}').style.backgroundImage = urlString;
+       document.getElementById('image{{i}}').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image{{i}}').style.backgroundSize = "cover";
+    });
+   </script>     
+ {%endfor%}
+
+  <!--   fetch("https://api.themoviedb.org/3/movie/"+{{movieId[2]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image3').style.backgroundImage = urlString;
+       document.getElementById('image3').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image3').style.backgroundSize = "cover";
+    });
+
+     fetch("https://api.themoviedb.org/3/movie/"+{{movieId[3]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image4').style.backgroundImage = urlString;
+       document.getElementById('image4').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image4').style.backgroundSize = "cover";
+    }); 
+
+     fetch("https://api.themoviedb.org/3/movie/"+{{movieId[4]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image5').style.backgroundImage = urlString;
+       document.getElementById('image5').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image5').style.backgroundSize = "cover";
+    });   
+
+     fetch("https://api.themoviedb.org/3/movie/"+{{movieId[5]}}+"?api_key=232323d86ffdce2f2dddc40cca321612&language=en-US")
+        .then((response) => response.json())
+        .then((data) => {
+        const value = data.poster_path;
+        //Apply HTML src
+
+         var urlString = "url('https://www.themoviedb.org/t/p/w600_and_h900_bestv2" + value + " ')";
+         document.getElementById('image6').style.backgroundImage = urlString;
+       document.getElementById('image6').style.backgroundRepeat = "no-repeat";
+        document.getElementById('image6').style.backgroundSize = "cover";
+    });      
+
+      </script> --> 
+    <script>
+$(".card").hover(function() {
+  var vSrc =  $(this).find('iframe').data('video');
+  var video = $(this).find('iframe');
+  video.attr('src',vSrc);
+  setTimeout(function(){ ytplayer.unMute(); }, 1000);
+},
+function() {
+  $(this).find('iframe').attr('src','');
+});
+
+$('.view').click(function(){
+  var el = $(this);
+
+  if(el.hasClass('series_lacasa') == true){
+    $('.episodes .episode').each(function(){
+      var toShow = $(this).data('lacasa');
+      $(this).css('background','url('+toShow+') no-repeat center/cover');
+    });
+  } else if (el.hasClass('series_got') == true) {
+    $('.episodes .episode').each(function(){
+      var toShow = $(this).data('got');
+      $(this).css('background','url('+toShow+') no-repeat center/cover');
+    });
+  }  else if (el.hasClass('series_vikings') == true) {
+    $('.episodes .episode').each(function(){
+      var toShow = $(this).data('vikings');
+      $(this).css('background','url('+toShow+') no-repeat center/cover');
+    });
+  }
+
+  $('.fullserie').addClass('active');
+});
+
+$('.fullserie .close').click(function(){
+  $('.fullserie').removeClass('active');
+});
+</script>
+
+ {%for i in range(1, len)%} 
+<script>
+
+fetch("https://api.themoviedb.org/3/movie/"+{{movieId[i]}}+"/videos?api_key=232323d86ffdce2f2dddc40cca321612&append_to_response=videost")
+.then((response) => response.json())
+.then((data) => {
+const value = data.results[0].key
+//Apply HTML src
+document.getElementById("ytplayer{{i}}").src = 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1'
+//Set Data-Attribute
+document.getElementById("ytplayer{{i}}").setAttribute('data-video', 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1')
+});
+</script>
+{%endfor%}
+
+<!--fetch("https://api.themoviedb.org/3/movie/"+{{movieId[2]}}+"/videos?api_key=232323d86ffdce2f2dddc40cca321612&append_to_response=videost")
+.then((response) => response.json())
+.then((data) => {
+const value = data.results[0].key
+//Apply HTML src
+document.getElementById("ytplayer2").src = 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1'
+//Set Data-Attribute
+document.getElementById("ytplayer2").setAttribute('data-video', 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1')
+});
+
+
+fetch("https://api.themoviedb.org/3/movie/"+{{movieId[3]}}+"/videos?api_key=232323d86ffdce2f2dddc40cca321612&append_to_response=videost")
+.then((response) => response.json())
+.then((data) => {
+const value = data.results[0].key
+//Apply HTML src
+document.getElementById("ytplayer3").src = 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1'
+//Set Data-Attribute
+document.getElementById("ytplayer3").setAttribute('data-video', 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1')
+});
+
+fetch("https://api.themoviedb.org/3/movie/"+{{movieId[4]}}+"/videos?api_key=232323d86ffdce2f2dddc40cca321612&append_to_response=videost")
+.then((response) => response.json())
+.then((data) => {
+const value = data.results[0].key
+//Apply HTML src
+document.getElementById("ytplayer4").src = 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1'
+//Set Data-Attribute
+document.getElementById("ytplayer4").setAttribute('data-video', 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1')
+});
+
+fetch("https://api.themoviedb.org/3/movie/"+{{movieId[5]}}+"/videos?api_key=232323d86ffdce2f2dddc40cca321612&append_to_response=videost")
+.then((response) => response.json())
+.then((data) => {
+const value = data.results[0].key
+//Apply HTML src
+document.getElementById("ytplayer5").src = 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1'
+//Set Data-Attribute
+document.getElementById("ytplayer5").setAttribute('data-video', 'https://www.youtube.com/embed/'+value+'?autoplay=1&autohide=2&border=0&wmode=opaque&enablejsapi=1&modestbranding=1&controls=0&showinfo=1&mute=1')
+});
+
+</script>-->
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="box">
+      
+    <form method="POST" action="/forgot">
+    <br><h3 class="title"><b><font color="#00bc8c">forgot password</font></b></h3>
+    <label>&nbsp;&nbsp;Email</label><br>
+    <input class="box1" type="email" placeholder="Your mailid" name="email" size="30" required>
+    
+    <label>&nbsp;&nbsp;Password<br></label><br>
+    <input class="box1" type="password" placeholder="Your Password" name="password" size="30" required><br>
+
+    <label>&nbsp;&nbsp;Confirm password<br></label><br>
+    <input class="box1" type="password" placeholder="Your Password" name="confirm" size="30" required><br>
+    
+    
+    &nbsp;&nbsp;<input type="checkbox" name="remember" style="margin-bottom:15px"> Remember me<br>
+  
+            
+            <button class="box2">update password</button></div>
+        </form>
+    
+
+{%endblock%}
